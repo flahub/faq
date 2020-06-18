@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="oc_faq" resource="default" engine="innodb" comment="OC Faq Schema">
+        <column xsi:type="int" name="faq_id" padding="10" unsigned="true" nullable="false" identity="true" comment="FAQ ID" />
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" comment="Category ID"/>
+        <column xsi:type="varchar" name="question" comment="Title" nullable="false" />
+        <column xsi:type="text" name="answer" comment="Content" nullable="false" />
+        <column xsi:type="boolean" name="status" nullable="false" comment="Status" default="0"/>
+        <column xsi:type="varchar" name="store_ids" length="255" nullable="false" comment="Store Ids" default="'0'"/>
+        <column xsi:type="int" name="sort_order" padding="10" unsigned="true" nullable="false" comment="Sort Order"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Modification Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="faq_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="oc_faq_category"
+                    table="oc_faq"
+                    column="category_id"
+                    referenceTable="oc_faq_category"
+                    referenceColumn="category_id"
+                    onDelete="CASCADE"
+        />
+        <index referenceId="OC_FAQ_SORT_ORDER" indexType="btree">
+            <column name="sort_order"/>
+        </index>
+        <index referenceId="OC_FAQ_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+        <index referenceId="OC_FAQ_STOREIDS" indexType="btree">
+            <column name="store_ids"/>
+        </index>
+    </table>
+
+    <table name="oc_faq_category" resource="default" engine="innodb" comment="OC Faq Category Schema">
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Category ID" />
+        <column xsi:type="varchar" name="title" comment="Title" nullable="false" />
+        <column xsi:type="boolean" name="status" nullable="false" comment="Status" default="0"/>
+        <column xsi:type="varchar" name="store_ids" length="255" nullable="false" comment="Store Ids" default="'0'"/>
+        <column xsi:type="smallint" name="sort_order" unsigned="true" nullable="false" comment="Sort Order" default="0"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Modification Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+        <index referenceId="OC_FAQ_CATEGORY_SORT_ORDER" indexType="btree">
+            <column name="sort_order"/>
+        </index>
+        <index referenceId="OC_FAQ_CATEGORY_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+        <index referenceId="OC_FAQ_CATEGORY_STOREIDS" indexType="btree">
+            <column name="store_ids"/>
+        </index>
+    </table>
+</schema>

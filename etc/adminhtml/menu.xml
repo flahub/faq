@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Orangecat_Faq::faq_main_content" title="FAQ" module="Orangecat_Faq" sortOrder="50" resource="Orangecat_Faq::main_content"/>
+        <add id="Orangecat_Faq::question" title="Questions" module="Orangecat_Faq" sortOrder="51" parent="Orangecat_Faq::faq_main_content" action="faq/question" resource="Orangecat_Faq::question"/>
+        <add id="Orangecat_Faq::category" title="Categories" module="Orangecat_Faq" sortOrder="52" parent="Orangecat_Faq::faq_main_content" action="faq/category" resource="Orangecat_Faq::category"/>
+    </menu>
+</config>

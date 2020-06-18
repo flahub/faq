@@ -1,0 +1,29 @@
+{
+    "name": "orangecat/magento2faq",
+    "description": "Magento 2 - FAQ extension",
+    "require": {
+        "php": ">=7.0"
+    },
+    "license": [
+        "MIT"
+    ],
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Orangecat",
+            "homepage": "https://github.com/flahub"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Orangecat\\FAQ\\": ""
+        }
+    },
+    "support": {
+        "issues": "https://github.com/flahub/Faq/issues"
+    }
+}

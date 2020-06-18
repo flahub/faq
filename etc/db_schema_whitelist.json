@@ -1,0 +1,43 @@
+{
+    "oc_faq": {
+        "column": {
+            "faq_id": true,
+            "category_id": true,
+            "question": true,
+            "answer": true,
+            "status": true,
+            "store_ids": true,
+            "sort_order": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "index": {
+            "OC_FAQ_SORT_ORDER": true,
+            "OC_FAQ_STATUS": true,
+            "OC_FAQ_STORE_IDS": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "OC_FAQ_CATEGORY_ID_OC_FAQ_CATEGORY_CATEGORY_ID": true
+        }
+    },
+    "oc_faq_category": {
+        "column": {
+            "category_id": true,
+            "title": true,
+            "status": true,
+            "store_ids": true,
+            "sort_order": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "index": {
+            "OC_FAQ_CATEGORY_SORT_ORDER": true,
+            "OC_FAQ_CATEGORY_STATUS": true,
+            "OC_FAQ_CATEGORY_STORE_IDS": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,56 @@
+<?php
+/** @var \Orangecat\Faq\Block\Index\Index $block */
+//$questions = $block->getQuestions();
+//if($questions):
+//    foreach ($questions as $question):?>
+        <p><!--?=__('Title') . ': ' . $question['question'];?--></p>
+        <p><!--=$question['answer'];?--></p>
+        <hr>
+<?php
+//    endforeach;
+//endif;
+//###################### widget ###########################
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "questions": {
+                    "component"     : "Orangecat_Faq/js/faq_model",
+                    "baseUrl"       : "<?php echo $block->getBaseUrl() ?>",
+                    "apiUrl"        : "<?php echo $block->getApiUrl() ?>",
+                    "storeId"       : <?php echo $block->getStoreId() ?>
+                }
+            }
+        }
+    }
+}
+</script>
+<div data-bind="scope:'questions'">
+    <div class="container_faq" style="display: none">
+        <!-- ko if: categories().length > 0 -->
+        <!-- ko foreach: categories -->
+        <h2><span data-bind="text:title"></span></h2>
+        <div class="accordion">
+            <!-- ko foreach: questions -->
+            <div class="accordion-item">
+                <a data-bind="text:question"></a>
+                <div class="answer">
+                    <p data-bind="html:answer"></p>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: dataLoaded() -->
+        <!-- ko if: categories().length < 1 -->
+        <p><?php echo __('Questions and answers was not found'); ?></p>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+
+    <div id="initial_message"><p><?php echo __("Reading data, please wait"); ?></p></div>
+</div>
